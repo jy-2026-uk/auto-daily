@@ -20,9 +20,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r euro_auto_news/requirements.txt
 
-      - name: Debug - Print webhook
-        run: echo "Webhook: ${{ secrets.FEISHU_WEBHOOK }}"
-
       - name: Run test script
         env:
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
