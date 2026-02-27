@@ -11,13 +11,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+
       - name: Install dependencies
         run: pip install -r euro_auto_news/requirements.txt
-      - name: Run news fetcher
+
+      - name: Debug - Print webhook
+        run: echo "Webhook: ${{ secrets.FEISHU_WEBHOOK }}"
+
+      - name: Run test script
         env:
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
-        run: python euro_auto_news/main.py
+        run: python euro_auto_news/test_github.py
